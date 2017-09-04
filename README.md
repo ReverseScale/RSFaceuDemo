@@ -10,7 +10,7 @@ Faceu脸萌一定是有一套自己的核心算法，所以它会说“有人模
 
 | 名称 |1.列表页 |2.滤镜效果页 |3.绿屏抠像页1 |4.绿屏抠像页2 |5.静态合成页 |6.动态合成页 |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 截图 | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/98119289.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/70703063.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/85158814.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/23351798.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/17807305.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/13049975.jpg) |
+| 截图 | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/98294256.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/68659680.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/33825098.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/25444114.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/17807305.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/28926041.jpg) |
 | 描述 | 通过 storyboard 搭建基本框架 | 基本展示功能 | 常用跳转功能 | 基本导航功能 | 动态轨迹动画 | 图层和打点功能 |
 
 ## Advantage 框架的优势
