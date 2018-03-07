@@ -9,8 +9,7 @@
 #import "UIImageView+Gif.h"
 @implementation UIImageView (Gif)
 // 播放GIF
-- (void)playGifAnim:(NSArray *)images
-{
+- (void)playGifAnim:(NSArray *)images {
     if (!images.count) {
         return;
     }
@@ -23,8 +22,7 @@
     [self startAnimating];
 }
 // 停止动画
-- (void)stopGifAnim
-{
+- (void)stopGifAnim {
     if (self.isAnimating) {
         [self stopAnimating];
     }

@@ -140,11 +140,8 @@
             if(faceFeature.hasMouthPosition){
                 
             }
-            
         }
-        
     }
-    
 }
 
 

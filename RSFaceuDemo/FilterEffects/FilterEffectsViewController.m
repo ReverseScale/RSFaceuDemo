@@ -36,24 +36,19 @@
 #pragma mark - action
 -(void)onRightNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event{
     if(self.rightButton.selected){
-        
         //picker关闭
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.3];
         self.pickerView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, CGRectGetHeight(self.pickerView.bounds));
         [UIView commitAnimations];
-        
-    }else{
+    } else {
         //picker显示
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.3];
         self.pickerView.frame = CGRectMake(0, ScreenHeight - CGRectGetHeight(self.pickerView.bounds), ScreenWidth, CGRectGetHeight(self.pickerView.bounds));
         [UIView commitAnimations];
-        
     }
-    
     self.rightButton.selected=(!self.rightButton.selected);
-    
 }
 
 #pragma mark - PickerView
@@ -77,8 +72,7 @@
 - (void)fliterEvent:(NSString *)filterName {
     if ([filterName isEqualToString:@"OriginImage"]) {
         self.imageView.image = self.originImage;
-        
-    }else{
+    } else {
         //将UIImage转换成CIImage
         CIImage *ciImage = [[CIImage alloc] initWithImage:self.originImage];
         //创建滤镜
@@ -104,18 +98,17 @@
         
         self.imageView.image = image;
     }
-    
 }
 
 #pragma mark - lazy
--(UIImage *)originImage{
+- (UIImage *)originImage{
     if (!_originImage) {
         _originImage = [UIImage imageNamed:@"Panda"];
     }
     return _originImage;
 }
 
--(UIImageView *)imageView{
+- (UIImageView *)imageView {
     if (!_imageView) {
         _imageView=[[UIImageView alloc] initWithImage:self.originImage];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -125,7 +118,7 @@
     return _imageView;
 }
 
--(UIPickerView *)pickerView{
+- (UIPickerView *)pickerView {
     
     if (!_pickerView) {
         int pickerHeight = 200;//pickerView的高度
@@ -138,7 +131,7 @@
     return _pickerView;
 }
 
--(NSMutableArray *)dataList{
+- (NSMutableArray *)dataList {
     if (!_dataList) {
         _dataList=
         _dataList = [[NSMutableArray alloc] initWithObjects:
@@ -158,14 +151,14 @@
     return _dataList;
 }
 
--(UIBarButtonItem *)rightBarButtonItem{
+- (UIBarButtonItem *)rightBarButtonItem {
     if(!_rightBarButtonItem){
         _rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:self.rightButton];
     }
     return _rightBarButtonItem;
 }
 
--(UIButton *)rightButton{
+- (UIButton *)rightButton {
     if (!_rightButton) {
         
         _rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -185,7 +178,6 @@
     }
     return _rightButton;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -23,7 +23,7 @@
 
 @implementation DynamicSyntheticViewController
 
--(void)viewDidLoad{
+- (void)viewDidLoad {
     [super viewDidLoad ];
     
     self.navigationItem.rightBarButtonItem=self.rightBarButtonItem;
@@ -56,11 +56,10 @@
     if (CGRectEqualToRect(faceBounds, CGRectZero)   ) {
         self.leftEyeImgView.hidden=self.rightEyeImgView.hidden=self.faceView.hidden=self.haloImgView.hidden=YES;
         
-    }else{
+    } else {
         
         self.faceView.hidden=self.haloImgView.hidden=NO;
         self.faceView.frame=faceBounds;
-        
         {
             CGFloat haloWidth= faceBounds.size.width;
             CGFloat haloHeight= haloWidth * 159 / 351;
