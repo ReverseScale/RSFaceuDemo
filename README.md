@@ -1,10 +1,13 @@
 # RSFaceuDemo
-Faceu Face Moe must have had a set of its own core algorithms, so it would say "Someone mimics my face ..."
 
 ![](https://img.shields.io/badge/platform-iOS-red.svg) 
 ![](https://img.shields.io/badge/language-Objective--C-orange.svg) 
 ![](https://img.shields.io/badge/download-11.6MB-brightgreen.svg) 
 ![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
+
+[EN](#Requirements) | [中文](#中文说明)
+
+Faceu Face Moe must have had a set of its own core algorithms, so it would say "Someone mimics my face ..."
 
 Recently in the study of some image processing technology, the most common applications are the number of "Faceu Meng", in order to show clearer, I choose to split the way to achieve Demo.
 
