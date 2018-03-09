@@ -319,11 +319,6 @@ SOFTWARE.
 
 Faceu脸萌一定是有一套自己的核心算法，所以它会说“有人模仿我的脸...”
 
-![](https://img.shields.io/badge/platform-iOS-red.svg) 
-![](https://img.shields.io/badge/language-Objective--C-orange.svg) 
-![](https://img.shields.io/badge/download-11.6MB-brightgreen.svg) 
-![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
-
 最近在研究一些图像处理的技术，其中最常见的应用就要数 “Faceu 脸萌” 了，为了展示更清晰，我选择拆分功能的方式来实现 Demo。
 
 ## 🎨 测试 UI 什么样子？
