@@ -13,10 +13,10 @@ Recently in the study of some image processing technology, the most common appli
 
 ## 🎨 Why test the UI?
 
-| Name | 1. List Page | 2. Filter Effect Page | 3. Green Screen Key Page 1 | 4. Green Screen Key Page 2 | 5. Static Composite Page | 6.Dynamic Synthesis Page |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 截图 | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/98294256.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/68659680.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/33825098.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/25444114.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/17807305.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/28926041.jpg) |
-| Description | Build a basic framework via storyboard | Based on the system of several filter effects | Based on GPUImage package to achieve green screen chromakey | Replacing material to achieve green screen keying | Based on GPUImage package to achieve static synthesis | Based on GPUImage package to achieve synthesis |
+|1.List page | 2.Filter effect page | 3.Green screen image page | 4.Static composition page |
+| ------------- | ------------- | ------------- | ------------- |
+| ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/35442700.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/79019240.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/56773520.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/86588720.jpg) |
+| Build a basic framework | Several filter effects | Realize green screen artifacts | Static synthesis Gif |
 
 ## 🚀 Advantage 
 * 1. Less documents, code concise, innovative features
@@ -78,6 +78,10 @@ self.resultImageView.image=[[UIImage imageWithCIImage:filter.outputImage] copy];
 
 ### Static Synthesis
 
+Effect demonstration:
+
+![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/17807305.jpg) 
+
 Quote header file:
 
 ```
@@ -88,21 +92,12 @@ Quote header file:
 The core method:
 
 ```
-for (UIView *view in self.oldImageView.subviews) {
-    [view removeFromSuperview];
-}
-
 // Image Recognition: You can choose between CIDetectorAccuracyHigh and CIDetectorAccuracyLow, because you want to be more accurate
 CIDetectorAccuracyHigh
 NSDictionary *opts = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh
                                                  forKey:CIDetectorAccuracy];
 
 CIDetector *detector=[CIDetector detectorOfType:CIDetectorTypeFace context:nil options:opts];
-
-//    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace
-//                                              context:nil
-//                                              options:nil];
-
 CIImage *image=[[CIImage alloc] initWithImage:self.oldImageView.image];
 NSArray *faceArray = [detector featuresInImage:image
                                        options:nil];
@@ -146,71 +141,16 @@ for (CIFeature *f in faceArray){
         CGFloat haloWidth= faceViewBounds.size.width;
         CGFloat haloHeight= haloWidth * 159 / 351;
         
-        CGFloat haloCenterX=faceViewBounds.origin.x+faceViewBounds.size.width/2;
-        
-        CGRect rect=CGRectMake(haloCenterX-haloWidth/2, faceViewBounds.origin.y-haloHeight, haloWidth, haloHeight);
-        imageView.frame=rect;
-        [self.oldImageView addSubview:imageView];
-        
-        
-        NSMutableArray *list=[NSMutableArray new];
-        for (int i=0; i<41; i++) {
-            if (i<10) {
-                NSString *name=[NSString stringWithFormat:@"halo_00%d",i];
-                UIImage  *image=  [UIImage imageNamed:name];
-                [list addObject:image];
-            }else{
-                NSString *name=[NSString stringWithFormat:@"halo_0%d",i];
-                UIImage  *image=  [UIImage imageNamed:name];
-                [list addObject:image];
-            }
-        }
-        
-        [imageView playGifAnim:[list copy]];
-        
-        // to determine if there is left eye position
-        if(faceFeature.hasLeftEyePosition){
-            
-            CGFloat x=faceFeature.leftEyePosition.x;
-            CGFloat y=faceFeature.leftEyePosition.y;
-            CGRect leftEyeRect=CGRectMake(x-10/2,y-10/2, 10, 10);
-            
-            // Get face frame
-            CGRect leftEyeBounds = CGRectApplyAffineTransform(leftEyeRect, transform);
-            leftEyeBounds=CGRectApplyAffineTransform(leftEyeBounds,scaleTransform);
-            leftEyeBounds.origin.x += offsetX;
-            leftEyeBounds.origin.y += offsetY;
-            
-            UIView *leftEyeView = [[UIView alloc] initWithFrame:leftEyeBounds];
-            leftEyeView .backgroundColor = [UIColor orangeColor];
-            [self.oldImageView addSubview:leftEyeView ];
-            
-        }
-        // Judge whether there is the right eye position
-        if(faceFeature.hasRightEyePosition){
-            CGFloat x=faceFeature.rightEyePosition.x;
-            CGFloat y=faceFeature.rightEyePosition.y;
-            CGRect rightEyeRect=CGRectMake(x-10/2,y-10/2, 10, 10);
-            
-            //Get face frame
-            CGRect rightEyeBounds = CGRectApplyAffineTransform(rightEyeRect, transform);
-            rightEyeBounds=CGRectApplyAffineTransform(rightEyeBounds,scaleTransform);
-            rightEyeBounds.origin.x += offsetX;
-            rightEyeBounds.origin.y += offsetY;
-            
-            UIView *rightEyeView = [[UIView alloc] initWithFrame:rightEyeBounds];
-            rightEyeView.backgroundColor = [UIColor orangeColor];
-            [self.oldImageView addSubview:rightEyeView];
-        }
-        // Judge whether the mouth position
-        if(faceFeature.hasMouthPosition){
-            
-        }
+        ...
     }
 }
 ```
 
 ### Dynamic synthesis
+
+Effect demonstration:
+
+![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/28926041.jpg) 
 
 Quote header file:
 ```
@@ -243,42 +183,7 @@ enum {
 BOOL isUsingFrontFacingCamera = FALSE;
 AVCaptureDevicePosition currentCameraPosition = [self.videoCamera cameraPosition];
 
-if (currentCameraPosition != AVCaptureDevicePositionBack) {
-    isUsingFrontFacingCamera = TRUE;
-}
-
-switch (curDeviceOrientation) {
-    case UIDeviceOrientationPortraitUpsideDown:  // Device oriented vertically, home button on the top
-        exifOrientation = PHOTOS_EXIF_0ROW_LEFT_0COL_BOTTOM;
-        break;
-    case UIDeviceOrientationLandscapeLeft:       // Device oriented horizontally, home button on the right
-        if (isUsingFrontFacingCamera)
-            exifOrientation = PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT;
-        else
-            exifOrientation = PHOTOS_EXIF_0ROW_TOP_0COL_LEFT;
-        break;
-    case UIDeviceOrientationLandscapeRight:      // Device oriented horizontally, home button on the left
-        if (isUsingFrontFacingCamera)
-            exifOrientation = PHOTOS_EXIF_0ROW_TOP_0COL_LEFT;
-        else
-            exifOrientation = PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT;
-        break;
-    case UIDeviceOrientationPortrait:            // Device oriented vertically, home button on the bottom
-    default:
-        exifOrientation = PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP;
-        break;
-}
-
-imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:exifOrientation] forKey:CIDetectorImageOrientation];
-NSArray *features = [self.faceDetector featuresInImage:convertedImage options:imageOptions];
-
-// get the clean aperture
-CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
-CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
-
-
-[self GPUVCWillOutputFeatures:features forClap:clap andOrientation:curDeviceOrientation];
-_faceThinking = NO;
+...
 ```
 
 
@@ -323,10 +228,11 @@ Faceu脸萌一定是有一套自己的核心算法，所以它会说“有人模
 
 ## 🎨 测试 UI 什么样子？
 
-| 名称 |1.列表页 |2.滤镜效果页 |3.绿屏抠像页1 |4.绿屏抠像页2 |5.静态合成页 |6.动态合成页 |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 截图 | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/98294256.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/68659680.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/33825098.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/25444114.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/17807305.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/28926041.jpg) |
-| 描述 | 通过 storyboard 搭建基本框架 | 基于系统的几种滤镜效果 | 基于 GPUImage 封装实现绿屏抠像 | 更换素材实现绿屏抠像 | 基于 GPUImage 封装实现静态合成 | 基于 GPUImage 封装实现合成 |
+|1.列表页 |2.滤镜效果页 |3.绿屏抠像页 |4.静态合成页 |
+| ------------- | ------------- | ------------- | ------------- |
+| ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/35442700.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/79019240.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/56773520.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/86588720.jpg) |
+| 搭建基本框架 | 几种滤镜效果 | 实现绿屏抠像 | 静态合成Gif |
+
 
 ## 🚀 框架的优势
 * 1.文件少，代码简洁，功能新颖
@@ -337,7 +243,6 @@ Faceu脸萌一定是有一套自己的核心算法，所以它会说“有人模
 ## 🤖 要求
 * iOS 7+
 * Xcode 8+
-
 
 ## 🛠 使用方法
 ### 滤镜效果 
@@ -389,6 +294,10 @@ self.resultImageView.image=[[UIImage imageWithCIImage:filter.outputImage] copy];
 
 ### 静态合成
 
+效果演示：
+
+![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/17807305.jpg) 
+
 引用头文件：
 
 ```
@@ -399,10 +308,6 @@ self.resultImageView.image=[[UIImage imageWithCIImage:filter.outputImage] copy];
 核心方法：
 
 ```
-for (UIView *view in self.oldImageView.subviews) {
-    [view removeFromSuperview];
-}
-
 // 图像识别能力：可以在CIDetectorAccuracyHigh(较强的处理能力)与CIDetectorAccuracyLow(较弱的处理能力)中选择，因为想让准确度高一些在这里选择CIDetectorAccuracyHigh
 NSDictionary *opts = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh
                                                  forKey:CIDetectorAccuracy];
@@ -426,9 +331,7 @@ CGAffineTransform transform = CGAffineTransformScale(CGAffineTransformIdentity, 
 transform = CGAffineTransformTranslate(transform,0,-ciImageSize.height);
 
 for (CIFeature *f in faceArray){
-    
     if ([f.type isEqualToString:CIFeatureTypeFace]) {
-        
         CIFaceFeature *faceFeature=(CIFaceFeature *)f;
         // 实现坐标转换
         CGSize viewSize = self.oldImageView.bounds.size;
@@ -455,75 +358,18 @@ for (CIFeature *f in faceArray){
         UIImageView *imageView=[UIImageView new];
         CGFloat haloWidth= faceViewBounds.size.width;
         CGFloat haloHeight= haloWidth * 159 / 351;
-        
-        CGFloat haloCenterX=faceViewBounds.origin.x+faceViewBounds.size.width/2;
-        
-        CGRect rect=CGRectMake(haloCenterX-haloWidth/2, faceViewBounds.origin.y-haloHeight, haloWidth, haloHeight);
-        imageView.frame=rect;
-        [self.oldImageView addSubview:imageView];
-        
-        
-        NSMutableArray *list=[NSMutableArray new];
-        for (int i=0; i<41; i++) {
-            if (i<10) {
-                NSString *name=[NSString stringWithFormat:@"halo_00%d",i];
-                UIImage  *image=  [UIImage imageNamed:name];
-                [list addObject:image];
-            }else{
-                NSString *name=[NSString stringWithFormat:@"halo_0%d",i];
-                UIImage  *image=  [UIImage imageNamed:name];
-                [list addObject:image];
-            }
-        }
-        
-        [imageView playGifAnim:[list copy]];
-        
-        // 判断是否有左眼位置
-        if(faceFeature.hasLeftEyePosition){
-            
-            CGFloat x=faceFeature.leftEyePosition.x;
-            CGFloat y=faceFeature.leftEyePosition.y;
-            CGRect leftEyeRect=CGRectMake(x-10/2,y-10/2, 10, 10);
-            
-            //获取人脸的frame
-            CGRect leftEyeBounds = CGRectApplyAffineTransform(leftEyeRect, transform);
-            leftEyeBounds=CGRectApplyAffineTransform(leftEyeBounds,scaleTransform);
-            leftEyeBounds.origin.x += offsetX;
-            leftEyeBounds.origin.y += offsetY;
-            
-            UIView *leftEyeView = [[UIView alloc] initWithFrame:leftEyeBounds];
-            leftEyeView .backgroundColor = [UIColor orangeColor];
-            [self.oldImageView addSubview:leftEyeView ];
-            
-        }
-        // 判断是否有右眼位置
-        if(faceFeature.hasRightEyePosition){
-            CGFloat x=faceFeature.rightEyePosition.x;
-            CGFloat y=faceFeature.rightEyePosition.y;
-            CGRect rightEyeRect=CGRectMake(x-10/2,y-10/2, 10, 10);
-            
-            //获取人脸的frame
-            CGRect rightEyeBounds = CGRectApplyAffineTransform(rightEyeRect, transform);
-            rightEyeBounds=CGRectApplyAffineTransform(rightEyeBounds,scaleTransform);
-            rightEyeBounds.origin.x += offsetX;
-            rightEyeBounds.origin.y += offsetY;
-            
-            UIView *rightEyeView = [[UIView alloc] initWithFrame:rightEyeBounds];
-            rightEyeView.backgroundColor = [UIColor orangeColor];
-            [self.oldImageView addSubview:rightEyeView];
-            
-        }
-        // 判断是否有嘴位置
-        if(faceFeature.hasMouthPosition){
-            
-        }
-        
+	       
+	    ...
     }
     
 }
 ```
 
 ### 动态合成
+
+效果演示：
+
+![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/28926041.jpg) 
 
 引用头文件：
 
@@ -557,45 +403,9 @@ enum {
 BOOL isUsingFrontFacingCamera = FALSE;
 AVCaptureDevicePosition currentCameraPosition = [self.videoCamera cameraPosition];
 
-if (currentCameraPosition != AVCaptureDevicePositionBack) {
-    isUsingFrontFacingCamera = TRUE;
-}
-
-switch (curDeviceOrientation) {
-    case UIDeviceOrientationPortraitUpsideDown:  // Device oriented vertically, home button on the top
-        exifOrientation = PHOTOS_EXIF_0ROW_LEFT_0COL_BOTTOM;
-        break;
-    case UIDeviceOrientationLandscapeLeft:       // Device oriented horizontally, home button on the right
-        if (isUsingFrontFacingCamera)
-            exifOrientation = PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT;
-        else
-            exifOrientation = PHOTOS_EXIF_0ROW_TOP_0COL_LEFT;
-        break;
-    case UIDeviceOrientationLandscapeRight:      // Device oriented horizontally, home button on the left
-        if (isUsingFrontFacingCamera)
-            exifOrientation = PHOTOS_EXIF_0ROW_TOP_0COL_LEFT;
-        else
-            exifOrientation = PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT;
-        break;
-    case UIDeviceOrientationPortrait:            // Device oriented vertically, home button on the bottom
-    default:
-        exifOrientation = PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP;
-        break;
-}
-
-imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:exifOrientation] forKey:CIDetectorImageOrientation];
-NSArray *features = [self.faceDetector featuresInImage:convertedImage options:imageOptions];
-
-// get the clean aperture
-CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
-CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
-
-
-[self GPUVCWillOutputFeatures:features forClap:clap andOrientation:curDeviceOrientation];
-_faceThinking = NO;
+...
 ```
 
-使用简单、效率高效、进程安全~~~如果你有更好的建议,希望不吝赐教!
 
 ## ⚖ 协议
 
