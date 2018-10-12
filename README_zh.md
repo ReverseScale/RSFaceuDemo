@@ -9,6 +9,8 @@ Faceu 脸萌一定是有一套自己的核心算法，所以它会说“有人�
 
 最近在研究一些图像处理的技术，其中最常见的应用就要数 “Faceu 脸萌” 了，为了展示更清晰，我选择拆分功能的方式来实现 Demo。
 
+相关技术调研，参见 iOSPrinciple 系列 [AVFoundation](https://github.com/ReverseScale/iOSPrinciple_AVFoundation)
+
 ## 🎨 测试 UI 什么样子？
 
 |1.列表页 |2.滤镜效果页 |3.绿屏抠像页 |4.静态合成页 |
