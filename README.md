@@ -11,7 +11,7 @@ Faceu Face Moe must have had a set of its own core algorithms, so it would say "
 
 Recently in the study of some image processing technology, the most common applications are the number of "Faceu Meng", in order to show clearer, I choose to split the way to achieve Demo.
 
-Related technology research, see iOSPrinciple series [AVFoundation] (https://github.com/ReverseScale/iOSPrinciple_AVFoundation)
+Related technology research, see iOSPrinciple series [AVFoundation](https://github.com/ReverseScale/iOSPrinciple_AVFoundation)
 
 ## 🎨 Why test the UI?
 
