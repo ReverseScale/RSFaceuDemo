@@ -15,7 +15,7 @@ Faceu 脸萌一定是有一套自己的核心算法，所以它会说“有人�
 
 |1.列表页 |2.滤镜效果页 |3.绿屏抠像页 |4.静态合成页 |
 | ------------- | ------------- | ------------- | ------------- |
-| ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/35442700.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/79019240.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/56773520.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/86588720.jpg) |
+| ![](https://user-gold-cdn.xitu.io/2018/3/14/1622333326e62135?w=358&h=704&f=png&s=39844) | ![](https://user-gold-cdn.xitu.io/2018/3/14/16223332de7b4a1f?w=358&h=704&f=png&s=211047) | ![](https://user-gold-cdn.xitu.io/2018/3/14/1622333326202318?w=358&h=704&f=png&s=119698) | ![](https://user-gold-cdn.xitu.io/2018/3/14/1622333325ac366a?w=358&h=704&f=png&s=70586) |
 | 搭建基本框架 | 几种滤镜效果 | 实现绿屏抠像 | 静态合成Gif |
 
 
@@ -81,7 +81,7 @@ self.resultImageView.image=[[UIImage imageWithCIImage:filter.outputImage] copy];
 
 效果演示：
 
-![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/17807305.jpg) 
+![](https://user-gold-cdn.xitu.io/2018/3/14/1622333d83913ca5?w=314&h=559&f=gif&s=197303) 
 
 引用头文件：
 
@@ -154,7 +154,7 @@ for (CIFeature *f in faceArray){
 
 效果演示：
 
-![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/28926041.jpg) 
+![](https://user-gold-cdn.xitu.io/2018/3/14/1622333d8362e40d?w=314&h=559&f=jpeg&s=118220) 
 
 引用头文件：
 
