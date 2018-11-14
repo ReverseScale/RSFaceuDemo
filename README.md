@@ -17,7 +17,7 @@ Related technology research, see iOSPrinciple series [AVFoundation](https://gith
 
 |1.List page | 2.Filter effect page | 3.Green screen image page | 4.Static composition page |
 | ------------- | ------------- | ------------- | ------------- |
-| ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/35442700.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/79019240.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/56773520.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/18-3-14/86588720.jpg) |
+| ![](https://user-gold-cdn.xitu.io/2018/3/14/1622333326e62135?w=358&h=704&f=png&s=39844) | ![](https://user-gold-cdn.xitu.io/2018/3/14/16223332de7b4a1f?w=358&h=704&f=png&s=211047) | ![](https://user-gold-cdn.xitu.io/2018/3/14/1622333326202318?w=358&h=704&f=png&s=119698) | ![](https://user-gold-cdn.xitu.io/2018/3/14/1622333325ac366a?w=358&h=704&f=png&s=70586) |
 | Build a basic framework | Several filter effects | Realize green screen artifacts | Static synthesis Gif |
 
 ## 🚀 Advantage 
@@ -82,7 +82,7 @@ self.resultImageView.image=[[UIImage imageWithCIImage:filter.outputImage] copy];
 
 Effect demonstration:
 
-![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/17807305.jpg) 
+![](https://user-gold-cdn.xitu.io/2018/3/14/1622333d83913ca5?w=314&h=559&f=gif&s=197303) 
 
 Quote header file:
 
@@ -152,7 +152,7 @@ for (CIFeature *f in faceArray){
 
 Effect demonstration:
 
-![](http://og1yl0w9z.bkt.clouddn.com/17-9-4/28926041.jpg) 
+![](https://user-gold-cdn.xitu.io/2018/3/14/1622333d8362e40d?w=314&h=559&f=jpeg&s=118220) 
 
 Quote header file:
 ```
